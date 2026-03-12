@@ -4,49 +4,103 @@
 <title>Miss Ayesha Sorry</title>
 
 <style>
+
 body{
 background:black;
 color:#ff4da6;
 font-family:monospace;
 white-space:pre;
 font-size:20px;
-padding:40px;
+text-align:center;
 }
 
-.line{
-margin:2px 0;
+.section{
+margin:60px 0;
 }
+
 </style>
 </head>
 
 <body>
 
-<div id="zigzag"></div>
+<div id="designs"></div>
 
 <script>
 
-let text = "MISS AYESHA SORRY ";
-let container = document.getElementById("zigzag");
+let text = "MISS AYESHA SORRY";
+let container = document.getElementById("designs");
 
-let totalLines = 5000;   // jitni lines chaho
-let maxIndent = 40;
-
-for(let i=0;i<totalLines;i++){
-
-let indent;
-
-if(i % (maxIndent*2) < maxIndent){
-indent = i % maxIndent;
-}else{
-indent = maxIndent - (i % maxIndent);
+function addLine(space,count){
+let line=" ".repeat(space);
+for(let i=0;i<count;i++){
+line+=text+" ";
+}
+let div=document.createElement("div");
+div.textContent=line;
+container.appendChild(div);
 }
 
-let line = document.createElement("div");
-line.className = "line";
-line.style.marginLeft = (indent*10)+"px";
-line.textContent = text.repeat(3);
+function zigzag(){
+for(let i=0;i<20;i++) addLine(i,1);
+for(let i=20;i>0;i--) addLine(i,1);
+}
 
-container.appendChild(line);
+function pyramid(){
+for(let i=1;i<=8;i++){
+addLine(20-i*2,i);
+}
+}
+
+function diamond(){
+for(let i=1;i<=6;i++){
+addLine(15-i,i);
+}
+for(let i=6;i>=1;i--){
+addLine(15-i,i);
+}
+}
+
+function wave(){
+for(let i=0;i<10;i++){
+addLine(i*2,1);
+}
+for(let i=10;i>0;i--){
+addLine(i*2,1);
+}
+}
+
+function heart(){
+addLine(5,2);
+addLine(3,3);
+addLine(2,4);
+addLine(4,3);
+addLine(6,2);
+addLine(8,1);
+}
+
+function arrow(){
+addLine(5,1);
+addLine(5,2);
+addLine(5,3);
+addLine(5,2);
+addLine(5,1);
+}
+
+function box(){
+for(let i=0;i<4;i++){
+addLine(5,4);
+}
+}
+
+for(let i=0;i<50;i++){   // repeat designs (5000+ words effect)
+
+zigzag();
+pyramid();
+diamond();
+wave();
+heart();
+arrow();
+box();
 
 }
 
