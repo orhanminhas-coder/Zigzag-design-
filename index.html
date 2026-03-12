@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Miss Ayesha Sorry</title>
+
+<style>
+body{
+background:black;
+color:#ff4da6;
+font-family:monospace;
+white-space:pre;
+font-size:20px;
+padding:40px;
+}
+
+.line{
+margin:2px 0;
+}
+</style>
+</head>
+
+<body>
+
+<div id="zigzag"></div>
+
+<script>
+
+let text = "MISS AYESHA SORRY ";
+let container = document.getElementById("zigzag");
+
+let totalLines = 5000;   // jitni lines chaho
+let maxIndent = 40;
+
+for(let i=0;i<totalLines;i++){
+
+let indent;
+
+if(i % (maxIndent*2) < maxIndent){
+indent = i % maxIndent;
+}else{
+indent = maxIndent - (i % maxIndent);
+}
+
+let line = document.createElement("div");
+line.className = "line";
+line.style.marginLeft = (indent*10)+"px";
+line.textContent = text.repeat(3);
+
+container.appendChild(line);
+
+}
+
+</script>
+
+</body>
+</html>
